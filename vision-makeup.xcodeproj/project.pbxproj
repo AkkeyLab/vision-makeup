@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F4F16D8F2A8631CD001B0A5F /* vision_makeupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D8E2A8631CD001B0A5F /* vision_makeupApp.swift */; };
+		F4F16D8F2A8631CD001B0A5F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D8E2A8631CD001B0A5F /* App.swift */; };
 		F4F16D912A8631CD001B0A5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D902A8631CD001B0A5F /* ContentView.swift */; };
 		F4F16D932A8631CF001B0A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D922A8631CF001B0A5F /* Assets.xcassets */; };
 		F4F16D962A8631CF001B0A5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */; };
@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		F4F16D8B2A8631CD001B0A5F /* vision-makeup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vision-makeup.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4F16D8E2A8631CD001B0A5F /* vision_makeupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vision_makeupApp.swift; sourceTree = "<group>"; };
+		F4F16D8E2A8631CD001B0A5F /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		F4F16D902A8631CD001B0A5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F4F16D922A8631CF001B0A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		F4F16D8D2A8631CD001B0A5F /* vision-makeup */ = {
 			isa = PBXGroup;
 			children = (
-				F4F16D8E2A8631CD001B0A5F /* vision_makeupApp.swift */,
+				F4F16D8E2A8631CD001B0A5F /* App.swift */,
 				F4F16D902A8631CD001B0A5F /* ContentView.swift */,
 				F4F16D922A8631CF001B0A5F /* Assets.xcassets */,
 				F4F16D942A8631CF001B0A5F /* Preview Content */,
@@ -138,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4F16D912A8631CD001B0A5F /* ContentView.swift in Sources */,
-				F4F16D8F2A8631CD001B0A5F /* vision_makeupApp.swift in Sources */,
+				F4F16D8F2A8631CD001B0A5F /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

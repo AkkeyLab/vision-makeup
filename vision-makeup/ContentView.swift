@@ -10,12 +10,38 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Before")
+            Image("color_test")
+                .resizable()
+                .scaledToFit()
+            Text("After")
+            editedImage()
+                .resizable()
+                .scaledToFit()
         }
-        .padding()
+    }
+
+    func editedImage() -> Image {
+        let image = UIImage(named: "color_test")!
+        let ciImage = CIImage(image: image)!
+        let redArray: [CGFloat] = [10,2,1,0,0,0,0,0,0]
+        let redVector = CIVector(values: redArray, count: Int(redArray.count))
+        let greenArray: [CGFloat] = [0,1,0,0,0,0,0,0,0]
+        let greenVector = CIVector(values: greenArray, count: Int(greenArray.count))
+        let blueArray: [CGFloat] = [0,0,1,0,0,0,0,0,0]
+        let blueVector = CIVector(values: blueArray, count: Int(blueArray.count))
+        let editedCIImage = CIFilter(
+            name: "CIColorCrossPolynomial",
+            parameters: [
+                kCIInputImageKey: ciImage,
+                "inputRedCoefficients": redVector,
+                "inputGreenCoefficients": greenVector,
+                "inputBlueCoefficients":blueVector
+            ]
+        )!.outputImage!
+        let context = CIContext()
+        let cgImage = context.createCGImage(editedCIImage, from: editedCIImage.extent)!
+        return Image(uiImage: UIImage(cgImage: cgImage))
     }
 }
 
