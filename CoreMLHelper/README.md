@@ -1,4 +1,4 @@
-# CoreMLHelpers
+# [CoreMLHelpers](https://github.com/hollance/CoreMLHelpers/tree/master)
 
 This is a collection of types and functions that make it a little easier to work with Core ML in Swift.
 
