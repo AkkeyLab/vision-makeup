@@ -54,6 +54,7 @@ struct ContentView: View {
 }
 
 final class ViewModel {
+    // https://github.com/john-rocky/CoreML-Models#face-parsing
     typealias FaceParsing = face_parsing
 
     enum FaceType: Int, CaseIterable {
