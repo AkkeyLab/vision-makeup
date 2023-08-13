@@ -12,6 +12,7 @@
 		F4F16D932A8631CF001B0A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D922A8631CF001B0A5F /* Assets.xcassets */; };
 		F4F16D962A8631CF001B0A5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */; };
 		F4F16D9D2A893A28001B0A5F /* face-parsing.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D9C2A893A28001B0A5F /* face-parsing.mlmodel */; };
+		F4F16DA12A894B88001B0A5F /* CoreMLHelper in Frameworks */ = {isa = PBXBuildFile; productRef = F4F16DA02A894B88001B0A5F /* CoreMLHelper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		F4F16D922A8631CF001B0A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F4F16D9C2A893A28001B0A5F /* face-parsing.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "face-parsing.mlmodel"; sourceTree = "<group>"; };
+		F4F16D9E2A8949E4001B0A5F /* CoreMLHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CoreMLHelper; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F16DA12A894B88001B0A5F /* CoreMLHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,8 +40,10 @@
 		F4F16D822A8631CD001B0A5F = {
 			isa = PBXGroup;
 			children = (
+				F4F16D9E2A8949E4001B0A5F /* CoreMLHelper */,
 				F4F16D8D2A8631CD001B0A5F /* vision-makeup */,
 				F4F16D8C2A8631CD001B0A5F /* Products */,
+				F4F16D9F2A894B88001B0A5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +75,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F4F16D9F2A894B88001B0A5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,6 +98,9 @@
 			dependencies = (
 			);
 			name = "vision-makeup";
+			packageProductDependencies = (
+				F4F16DA02A894B88001B0A5F /* CoreMLHelper */,
+			);
 			productName = "vision-makeup";
 			productReference = F4F16D8B2A8631CD001B0A5F /* vision-makeup.app */;
 			productType = "com.apple.product-type.application";
@@ -341,6 +356,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4F16DA02A894B88001B0A5F /* CoreMLHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreMLHelper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4F16D832A8631CD001B0A5F /* Project object */;
 }
