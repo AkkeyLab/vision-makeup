@@ -11,6 +11,7 @@
 		F4F16D912A8631CD001B0A5F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D902A8631CD001B0A5F /* ContentView.swift */; };
 		F4F16D932A8631CF001B0A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D922A8631CF001B0A5F /* Assets.xcassets */; };
 		F4F16D962A8631CF001B0A5F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */; };
+		F4F16D9D2A893A28001B0A5F /* face-parsing.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F4F16D9C2A893A28001B0A5F /* face-parsing.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		F4F16D902A8631CD001B0A5F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F4F16D922A8631CF001B0A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4F16D952A8631CF001B0A5F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4F16D9C2A893A28001B0A5F /* face-parsing.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "face-parsing.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				F4F16D8E2A8631CD001B0A5F /* App.swift */,
 				F4F16D902A8631CD001B0A5F /* ContentView.swift */,
+				F4F16D9C2A893A28001B0A5F /* face-parsing.mlmodel */,
 				F4F16D922A8631CF001B0A5F /* Assets.xcassets */,
 				F4F16D942A8631CF001B0A5F /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4F16D912A8631CD001B0A5F /* ContentView.swift in Sources */,
+				F4F16D9D2A893A28001B0A5F /* face-parsing.mlmodel in Sources */,
 				F4F16D8F2A8631CD001B0A5F /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

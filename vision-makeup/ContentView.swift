@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Vision
 
 struct ContentView: View {
+    private let viewModel = ViewModel()
+
     var body: some View {
         VStack {
             Text("Before")
@@ -46,6 +49,24 @@ struct ContentView: View {
         let context = CIContext()
         let cgImage = context.createCGImage(editedCIImage, from: editedCIImage.extent)!
         return Image(uiImage: UIImage(cgImage: cgImage))
+    }
+}
+
+final class ViewModel {
+    typealias FaceParsing = face_parsing
+
+    func lipsDetect() {
+        let mlModel = try! FaceParsing().model
+        let coreMLModel = try! VNCoreMLModel(for: mlModel)
+        let request = VNCoreMLRequest(model: coreMLModel)
+        request.imageCropAndScaleOption = .scaleFill
+
+        let image = CIImage(image: UIImage(named: "face")!)!
+        let requestHandler = VNImageRequestHandler(ciImage: image)
+        try! requestHandler.perform([request])
+
+        let result = request.results!.first as! VNCoreMLFeatureValueObservation
+        let multiArray = result.featureValue.multiArrayValue
     }
 }
 
