@@ -25,11 +25,11 @@ struct ContentView: View {
         let image = UIImage(named: "color_test")!
         let ciImage = CIImage(image: image)!
         let redArray: [CGFloat] = [10, 2, 1, 0, 0, 0, 0, 0, 0, 0]
-        let redVector = CIVector(values: redArray, count: Int(redArray.count))
+        let redVector = CIVector(values: redArray, count: redArray.count)
         let greenArray: [CGFloat] = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
-        let greenVector = CIVector(values: greenArray, count: Int(greenArray.count))
+        let greenVector = CIVector(values: greenArray, count: greenArray.count)
         let blueArray: [CGFloat] = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
-        let blueVector = CIVector(values: blueArray, count: Int(blueArray.count))
+        let blueVector = CIVector(values: blueArray, count: blueArray.count)
         let editedCIImage = CIFilter(
             name: "CIColorCrossPolynomial",
             parameters: [
