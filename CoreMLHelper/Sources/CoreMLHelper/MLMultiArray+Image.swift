@@ -78,14 +78,15 @@ extension MLMultiArray {
   public func cgImage(min: Double = 0,
                       max: Double = 255,
                       channel: Int? = nil,
-                      axes: (Int, Int, Int)? = nil) -> CGImage? {
+                      axes: (Int, Int, Int)? = nil,
+                      outputType:Int = .zero) -> CGImage? {
     switch self.dataType {
     case .double:
-      return _image(min: min, max: max, channel: channel, axes: axes)
-    case .float32:
-      return _image(min: Float(min), max: Float(max), channel: channel, axes: axes)
+      return _image(min: min, max: max, channel: channel, axes: axes, outputType: outputType)
+    case .float32, .float16:
+      return _image(min: Float(min), max: Float(max), channel: channel, axes: axes, outputType: outputType)
     case .int32:
-      return _image(min: Int32(min), max: Int32(max), channel: channel, axes: axes)
+      return _image(min: Int32(min), max: Int32(max), channel: channel, axes: axes, outputType: outputType)
     @unknown default:
       fatalError("Unsupported data type \(dataType.rawValue)")
     }
@@ -98,8 +99,9 @@ extension MLMultiArray {
   private func _image<T: MultiArrayType>(min: T,
                                          max: T,
                                          channel: Int?,
-                                         axes: (Int, Int, Int)?) -> CGImage? {
-    if let (b, w, h, c) = toRawBytes(min: min, max: max, channel: channel, axes: axes) {
+                                         axes: (Int, Int, Int)?,
+                                         outputType:Int) -> CGImage? {
+    if let (b, w, h, c) = toRawBytes(min: min, max: max, channel: channel, axes: axes, outputType: outputType) {
       if c == 1 {
         return CGImage.fromByteArrayGray(b, width: w, height: h)
       } else {
@@ -124,7 +126,8 @@ extension MLMultiArray {
   public func toRawBytes<T: MultiArrayType>(min: T,
                                             max: T,
                                             channel: Int? = nil,
-                                            axes: (Int, Int, Int)? = nil)
+                                            axes: (Int, Int, Int)? = nil,
+                                            outputType:Int)
                   -> (bytes: [UInt8], width: Int, height: Int, channels: Int)? {
     // MLMultiArray with unsupported shape?
     if shape.count < 2 {
@@ -216,7 +219,14 @@ extension MLMultiArray {
     for c in 0..<channels {
       for y in 0..<height {
         for x in 0..<width {
-          let value = ptr[c*cStride + y*yStride + x*xStride]
+          var value = ptr[c*cStride + y*yStride + x*xStride]
+          if outputType != 0 {
+            if value != T(outputType) {
+              value = T(0)
+            } else {
+              value = T(18)
+            }
+          }
           let scaled = (value - min) * T(255) / (max - min)
           let pixel = clamp(scaled, min: T(0), max: T(255)).toUInt8
           pixels[(y*width + x)*bytesPerPixel + c] = pixel
