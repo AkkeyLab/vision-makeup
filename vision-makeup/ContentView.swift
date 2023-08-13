@@ -11,24 +11,28 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Before")
-            Image("color_test")
+            Image("lips")
                 .resizable()
                 .scaledToFit()
             Text("After")
             editedImage()
                 .resizable()
                 .scaledToFit()
+            Text("Real")
+            Image("makeup")
+                .resizable()
+                .scaledToFit()
         }
     }
 
     func editedImage() -> Image {
-        let image = UIImage(named: "color_test")!
+        let image = UIImage(named: "lips")!
         let ciImage = CIImage(image: image)!
-        let redArray: [CGFloat] = [10, 2, 1, 0, 0, 0, 0, 0, 0, 0]
+        let redArray: [CGFloat] = [2, 2, 2, 0, 0, 0, 0, 0, 0, 0.2]
         let redVector = CIVector(values: redArray, count: redArray.count)
-        let greenArray: [CGFloat] = [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+        let greenArray: [CGFloat] = [0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
         let greenVector = CIVector(values: greenArray, count: greenArray.count)
-        let blueArray: [CGFloat] = [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+        let blueArray: [CGFloat] = [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
         let blueVector = CIVector(values: blueArray, count: blueArray.count)
         let editedCIImage = CIFilter(
             name: "CIColorCrossPolynomial",
