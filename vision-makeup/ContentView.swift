@@ -13,16 +13,24 @@ struct ContentView: View {
     private let viewModel = ViewModel()
 
     var body: some View {
-        VStack {
-            Text("Before")
-            Image("face")
-                .resizable()
-                .scaledToFit()
-            Text("After")
-            viewModel.makeupLips()
-                .resizable()
-                .scaledToFit()
-        }
+        Color.black
+            .ignoresSafeArea(.all)
+            .overlay {
+                VStack {
+                    Text("Before")
+                        .foregroundColor(.white)
+                        .font(.title)
+                    Image("face")
+                        .resizable()
+                        .scaledToFit()
+                    Text("After")
+                        .foregroundColor(.white)
+                        .font(.title)
+                    viewModel.makeupLips()
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
     }
 }
 
