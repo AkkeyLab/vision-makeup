@@ -13,43 +13,24 @@ struct ContentView: View {
     private let viewModel = ViewModel()
 
     var body: some View {
-        VStack {
-            Text("Before")
-            Image("lips")
-                .resizable()
-                .scaledToFit()
-            Text("After")
-            editedImage()
-                .resizable()
-                .scaledToFit()
-            Text("Real")
-            Image("makeup")
-                .resizable()
-                .scaledToFit()
-        }
-    }
-
-    func editedImage() -> Image {
-        let image = UIImage(named: "lips")!
-        let ciImage = CIImage(image: image)!
-        let redArray: [CGFloat] = [2, 2, 2, 0, 0, 0, 0, 0, 0, 0.2]
-        let redVector = CIVector(values: redArray, count: redArray.count)
-        let greenArray: [CGFloat] = [0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
-        let greenVector = CIVector(values: greenArray, count: greenArray.count)
-        let blueArray: [CGFloat] = [0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
-        let blueVector = CIVector(values: blueArray, count: blueArray.count)
-        let editedCIImage = CIFilter(
-            name: "CIColorCrossPolynomial",
-            parameters: [
-                kCIInputImageKey: ciImage,
-                "inputRedCoefficients": redVector,
-                "inputGreenCoefficients": greenVector,
-                "inputBlueCoefficients":blueVector
-            ]
-        )!.outputImage!
-        let context = CIContext()
-        let cgImage = context.createCGImage(editedCIImage, from: editedCIImage.extent)!
-        return Image(uiImage: UIImage(cgImage: cgImage))
+        Color.black
+            .ignoresSafeArea(.all)
+            .overlay {
+                VStack {
+                    Text("Before")
+                        .foregroundColor(.white)
+                        .font(.title)
+                    Image("face")
+                        .resizable()
+                        .scaledToFit()
+                    Text("After")
+                        .foregroundColor(.white)
+                        .font(.title)
+                    viewModel.makeupLips()
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
     }
 }
 
@@ -104,18 +85,18 @@ final class ViewModel {
         let compositedUpperLipImage = CIFilter(
             name: "CIBlendWithMask",
             parameters: [
-            kCIInputImageKey: editedCIImage,
-            kCIInputBackgroundImageKey: faceImage,
-            kCIInputMaskImageKey: upperLipCIImage
+                kCIInputImageKey: editedCIImage,
+                kCIInputBackgroundImageKey: faceImage,
+                kCIInputMaskImageKey: upperLipCIImage
             ]
         )!.outputImage!
 
         let compositedLowerLipImage = CIFilter(
             name: "CIBlendWithMask",
             parameters: [
-            kCIInputImageKey: editedCIImage,
-            kCIInputBackgroundImageKey: compositedUpperLipImage,
-            kCIInputMaskImageKey: lowerLipCIImage
+                kCIInputImageKey: editedCIImage,
+                kCIInputBackgroundImageKey: compositedUpperLipImage,
+                kCIInputMaskImageKey: lowerLipCIImage
             ]
         )!.outputImage!
 
@@ -133,7 +114,7 @@ private extension CIImage {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentViewPreviews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
